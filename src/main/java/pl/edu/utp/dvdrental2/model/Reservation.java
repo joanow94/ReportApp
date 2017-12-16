@@ -53,8 +53,9 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public Reservation(Integer id) {
+    public Reservation(Integer id, Date dateOfReservation) {
         this.id = id;
+        this.dateOfReservation = dateOfReservation;
     }
 
     public Integer getId() {

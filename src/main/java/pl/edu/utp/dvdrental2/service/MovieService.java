@@ -25,6 +25,10 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
+    public void deleteAll() {
+        movieRepository.deleteAll();
+    }
+
     public <S extends Movie> List<S> save(Iterable<S> itrbl) {
         return movieRepository.save(itrbl);
     }

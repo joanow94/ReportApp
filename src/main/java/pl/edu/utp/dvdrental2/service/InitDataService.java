@@ -48,9 +48,13 @@ public class InitDataService {
 
     @PostConstruct
     public void init() {
+
+        //delete all data
         phoneNumbersService.deleteAll();
         customerService.deleteAll();
         employeeService.deleteAll();
+        pieceService.deleteAll();
+        movieService.deleteAll();
 
         Customer c01 = new Customer(1, "William", "Smith", "smith123", "qwerty123", new Date("12/11/2015"));
         PhoneNumbers tel01 = new PhoneNumbers(1, "794-456-322");
@@ -261,20 +265,19 @@ public class InitDataService {
         movieService.save(Arrays.asList(m07));
         pieceService.save(Arrays.asList(p31, p32, p33, p34, p35));
 
-        Movie m08 = new Movie(8, "Mechaniczna pomarańcza", "Stanley Kubrick", "sci-fi", "USA", "1987", 10);
-        Piece p36 = new Piece(36, 0);
-        Piece p37 = new Piece(37, 0);
-        Piece p38 = new Piece(38, 0);
-        Piece p39 = new Piece(39, 0);
-        Piece p40 = new Piece(40, 0);
-        p36.setIdMovie(m08);
-        p37.setIdMovie(m08);
-        p38.setIdMovie(m08);
-        p39.setIdMovie(m08);
-        p40.setIdMovie(m08);
-        movieService.save(Arrays.asList(m08));
-        pieceService.save(Arrays.asList(p36, p37, p38, p39, p40));
-
+//        Movie m08 = new Movie(8, "Mechaniczna pomarańcza", "Stanley Kubrick", "sci-fi", "USA", "1987", 10);
+//        Piece p36 = new Piece(36, 0);
+//        Piece p37 = new Piece(37, 0);
+//        Piece p38 = new Piece(38, 0);
+//        Piece p39 = new Piece(39, 0);
+//        Piece p40 = new Piece(40, 0);
+//        p36.setIdMovie(m08);
+//        p37.setIdMovie(m08);
+//        p38.setIdMovie(m08);
+//        p39.setIdMovie(m08);
+//        p40.setIdMovie(m08);
+//        movieService.save(Arrays.asList(m08));
+//        pieceService.save(Arrays.asList(p36, p37, p38, p39, p40));
         Movie m09 = new Movie(9, "Lśnienie", "Stanley Kubrick", "horror", "USA", "1991", 10);
         Piece p41 = new Piece(41, 0);
         Piece p42 = new Piece(42, 0);

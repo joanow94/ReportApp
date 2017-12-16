@@ -21,6 +21,10 @@ public class PieceService {
     @Autowired
     private PieceRepository pieceRepository;
 
+    public void deleteAll() {
+        pieceRepository.deleteAll();
+    }
+
     public List<Piece> findAll() {
         return pieceRepository.findAll();
     }
