@@ -53,9 +53,11 @@ public class Regive implements Serializable {
     public Regive() {
     }
 
-    public Regive(Integer id) {
+    public Regive(Integer id, Date dateOfRegive) {
         this.id = id;
+        this.dateOfRegive = dateOfRegive;
     }
+
 
     public Integer getId() {
         return id;

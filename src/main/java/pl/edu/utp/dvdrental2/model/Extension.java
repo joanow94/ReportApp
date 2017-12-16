@@ -59,9 +59,10 @@ public class Extension implements Serializable {
         this.id = id;
     }
 
-    public Extension(Integer id, int days) {
+    public Extension(Integer id, int days, Date dateOfExtension) {
         this.id = id;
         this.days = days;
+        this.dateOfExtension = dateOfExtension;
     }
 
     public Integer getId() {
