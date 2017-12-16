@@ -17,6 +17,8 @@ import pl.edu.utp.dvdrental2.model.Employee;
 import pl.edu.utp.dvdrental2.model.Movie;
 import pl.edu.utp.dvdrental2.model.PhoneNumbers;
 import pl.edu.utp.dvdrental2.model.Piece;
+import pl.edu.utp.dvdrental2.model.Rental;
+import pl.edu.utp.dvdrental2.model.Reservation;
 
 /**
  *
@@ -44,129 +46,24 @@ public class InitDataService {
     @Autowired
     private ReservationService reservationService;
 
-    private Random random = new Random();
-
     @PostConstruct
     public void init() {
 
         //delete all data
+        regiveService.deleteAll();
+        extensionService.deleteAll();
+        rentalService.deleteAll();
+        reservationService.deleteAll();
         phoneNumbersService.deleteAll();
         customerService.deleteAll();
         employeeService.deleteAll();
         pieceService.deleteAll();
         movieService.deleteAll();
-
-        Customer c01 = new Customer(1, "William", "Smith", "smith123", "qwerty123", new Date("12/11/2015"));
-        PhoneNumbers tel01 = new PhoneNumbers(1, "794-456-322");
-        tel01.setIdCustomer(c01);
-        customerService.save(Arrays.asList(c01));
-        phoneNumbersService.save(Arrays.asList(tel01));
-
-        Customer c02 = new Customer(2, "John", "Williams", "williams123", "qwerty123", new Date("02/01/2015"));
-        PhoneNumbers tel02 = new PhoneNumbers(2, "234-456-322");
-        tel02.setIdCustomer(c02);
-        customerService.save(Arrays.asList(c02));
-        phoneNumbersService.save(Arrays.asList(tel02));
-
-        Customer c03 = new Customer(3, "James", "Brown", "brown123", "qwerty123", new Date("06/12/2015"));
-        PhoneNumbers tel03 = new PhoneNumbers(3, "553-868-556");
-        tel03.setIdCustomer(c03);
-        customerService.save(Arrays.asList(c03));
-        phoneNumbersService.save(Arrays.asList(tel03));
-
-        Customer c04 = new Customer(4, "Jacob", "Miller", "miller123", "qwerty123", new Date("12/12/2015"));
-        PhoneNumbers tel04 = new PhoneNumbers(4, "232-111-444");
-        tel04.setIdCustomer(c04);
-        customerService.save(Arrays.asList(c04));
-        phoneNumbersService.save(Arrays.asList(tel04));
-
-        Customer c05 = new Customer(5, "Robert", "Moore", "moore123", "qwerty123", new Date("01/05/2016"));
-        PhoneNumbers tel05 = new PhoneNumbers(5, "553-654-234");
-        tel05.setIdCustomer(c05);
-        customerService.save(Arrays.asList(c05));
-        phoneNumbersService.save(Arrays.asList(tel05));
-
-        Customer c06 = new Customer(6, "Michael", "Jones", "jones123", "qwerty123", new Date("12/07/2016"));
-        PhoneNumbers tel06 = new PhoneNumbers(6, "757-445-322");
-        tel06.setIdCustomer(c06);
-        customerService.save(Arrays.asList(c06));
-        phoneNumbersService.save(Arrays.asList(tel06));
-
-        Customer c07 = new Customer(7, "David", "Taylor", "taylor123", "qwerty123", new Date("01/07/2016"));
-        PhoneNumbers tel07 = new PhoneNumbers(7, "777-433-846");
-        tel07.setIdCustomer(c07);
-        customerService.save(Arrays.asList(c07));
-        phoneNumbersService.save(Arrays.asList(tel07));
-
-        Customer c08 = new Customer(8, "Thomas", "Jackson", "jackson123", "qwerty123", new Date("10/04/2016"));
-        PhoneNumbers tel08 = new PhoneNumbers(8, "888-567-120");
-        tel08.setIdCustomer(c08);
-        customerService.save(Arrays.asList(c08));
-        phoneNumbersService.save(Arrays.asList(tel08));
-
-        Customer c09 = new Customer(9, "Christopher", "King", "king123", "qwerty123", new Date("06/10/2015"));
-        PhoneNumbers tel09 = new PhoneNumbers(9, "999-455-678");
-        tel09.setIdCustomer(c09);
-        customerService.save(Arrays.asList(c09));
-        phoneNumbersService.save(Arrays.asList(tel09));
-
-        Customer c10 = new Customer(10, "Mary", "Green", "green123", "qwerty123", new Date("01/10/2017"));
-        PhoneNumbers tel10 = new PhoneNumbers(10, "568-000-678");
-        tel10.setIdCustomer(c10);
-        customerService.save(Arrays.asList(c10));
-        phoneNumbersService.save(Arrays.asList(tel10));
-
-        Customer c11 = new Customer(11, "Jennifer", "Baker", "baker123", "qwerty123", new Date("02/01/2017"));
-        PhoneNumbers tel11 = new PhoneNumbers(11, "564-678-346");
-        tel11.setIdCustomer(c11);
-        customerService.save(Arrays.asList(c11));
-        phoneNumbersService.save(Arrays.asList(tel11));
-
-        Customer c12 = new Customer(12, "Elizabeth", "Nelson", "nelson123", "qwerty123", new Date("02/02/2017"));
-        PhoneNumbers tel12 = new PhoneNumbers(12, "523-564-342");
-        tel12.setIdCustomer(c12);
-        customerService.save(Arrays.asList(c12));
-        phoneNumbersService.save(Arrays.asList(tel12));
-
-        Customer c13 = new Customer(13, "Jessica", "Perez", "perez123", "qwerty123", new Date("09/03/2017"));
-        PhoneNumbers tel13 = new PhoneNumbers(13, "341-966-457");
-        PhoneNumbers tel16 = new PhoneNumbers(16, "345-237-986");
-        PhoneNumbers tel17 = new PhoneNumbers(17, "125-467-387");
-        tel13.setIdCustomer(c13);
-        tel16.setIdCustomer(c13);
-        tel17.setIdCustomer(c13);
-        customerService.save(Arrays.asList(c13));
-        phoneNumbersService.save(Arrays.asList(tel13, tel16, tel17));
-
-        Customer c14 = new Customer(14, "Sarah", "Turner", "turner123", "qwerty123", new Date("07/08/2017"));
-        PhoneNumbers tel14 = new PhoneNumbers(14, "411-525-666");
-        PhoneNumbers tel18 = new PhoneNumbers(18, "345-975-157");
-        PhoneNumbers tel19 = new PhoneNumbers(19, "632-287-578");
-        tel14.setIdCustomer(c14);
-        tel18.setIdCustomer(c14);
-        tel19.setIdCustomer(c14);
-        customerService.save(Arrays.asList(c14));
-        phoneNumbersService.save(Arrays.asList(tel14, tel18, tel19));
-
-        Customer c15 = new Customer(15, "Nancy", "Campbell", "campbell123", "qwerty123", new Date("09/10/2015"));
-        PhoneNumbers tel15 = new PhoneNumbers(15, "542-086-421");
-        PhoneNumbers tel20 = new PhoneNumbers(20, "457-678-123");
-        tel15.setIdCustomer(c15);
-        tel20.setIdCustomer(c15);
-        customerService.save(Arrays.asList(c15));
-        phoneNumbersService.save(Arrays.asList(tel15, tel20));
-
-        Employee e01 = new Employee(1, "admin", "admin", "admin", "12345", "administrator");
-        Employee e02 = new Employee(2, "David", "Smith", "smith1234", "12345", "salesman");
-        Employee e03 = new Employee(3, "Robert", "Campbell", "campbell1234", "12345", "salesman");
-        Employee e04 = new Employee(4, "Nancy", "Brown", "brown1234", "12345", "salesman");
-        Employee e05 = new Employee(5, "Elizabeth", "Miller", "miller1234", "12345", "salesman");
-        Employee e06 = new Employee(6, "Jessica", "Green", "green1234", "12345", "salesman");
-        Employee e07 = new Employee(7, "Mary", "Moore", "moore1234", "12345", "salesman");
-        Employee e08 = new Employee(8, "William", "Turner", "turner1234", "12345", "salesman");
-
-        employeeService.save(Arrays.asList(e01, e02, e03, e04, e05, e06, e07, e08));
-
+        
+        
+        /**
+         * Movies with piecies
+         */
         Movie m01 = new Movie(1, "Zielona mila", "Frank Darabont", "dramat", "USA", "1999", 10);
         Piece p01 = new Piece(1, 0);
         Piece p02 = new Piece(2, 0);
@@ -265,19 +162,20 @@ public class InitDataService {
         movieService.save(Arrays.asList(m07));
         pieceService.save(Arrays.asList(p31, p32, p33, p34, p35));
 
-//        Movie m08 = new Movie(8, "Mechaniczna pomarańcza", "Stanley Kubrick", "sci-fi", "USA", "1987", 10);
-//        Piece p36 = new Piece(36, 0);
-//        Piece p37 = new Piece(37, 0);
-//        Piece p38 = new Piece(38, 0);
-//        Piece p39 = new Piece(39, 0);
-//        Piece p40 = new Piece(40, 0);
-//        p36.setIdMovie(m08);
-//        p37.setIdMovie(m08);
-//        p38.setIdMovie(m08);
-//        p39.setIdMovie(m08);
-//        p40.setIdMovie(m08);
-//        movieService.save(Arrays.asList(m08));
-//        pieceService.save(Arrays.asList(p36, p37, p38, p39, p40));
+        Movie m08 = new Movie(8, "Mechaniczna pomarańcza", "Stanley Kubrick", "sci-fi", "USA", "1987", 10);
+        Piece p36 = new Piece(36, 0);
+        Piece p37 = new Piece(37, 0);
+        Piece p38 = new Piece(38, 0);
+        Piece p39 = new Piece(39, 0);
+        Piece p40 = new Piece(40, 0);
+        p36.setIdMovie(m08);
+        p37.setIdMovie(m08);
+        p38.setIdMovie(m08);
+        p39.setIdMovie(m08);
+        p40.setIdMovie(m08);
+        movieService.save(Arrays.asList(m08));
+        pieceService.save(Arrays.asList(p36, p37, p38, p39, p40));
+
         Movie m09 = new Movie(9, "Lśnienie", "Stanley Kubrick", "horror", "USA", "1991", 10);
         Piece p41 = new Piece(41, 0);
         Piece p42 = new Piece(42, 0);
@@ -376,11 +274,168 @@ public class InitDataService {
         movieService.save(Arrays.asList(m15));
         pieceService.save(Arrays.asList(p71, p72, p73, p74, p75));
 
-//        Movie m16 = new Movie(15, "Nietykalni", "Olivier Nakache", "komedia", "Francja", "2011", 10);
-//        Movie m17 = new Movie(15, "Lot nad kukułczym gniazdem", "Milos Forman", "dramat", "Anglia", "1979", 10);
-//        Movie m18 = new Movie(15, "Forrest Gump", "Robert Zemeckis", "komedia", "USA", "2000", 10);
-//        Movie m19 = new Movie(15, "Powrót do przeszłości", "Robert Zemeckis", "przygodowy", "USA", "1998", 10);
-//        Movie m20 = new Movie(15, "Kontakt", "Robert Zemeckis", "sci-fi", "USA", "1997", 10);
+        Movie m16 = new Movie(16, "Strażnicy Galaktyki", "James Gunn", "Sci-Fi", "USA", "2014", 15);
+        Piece p76 = new Piece(76, 0);
+        Piece p77 = new Piece(77, 0);
+        Piece p78 = new Piece(78, 0);
+        Piece p79 = new Piece(79, 0);
+        Piece p80 = new Piece(80, 0);
+        p76.setIdMovie(m16);
+        p77.setIdMovie(m16);
+        p78.setIdMovie(m16);
+        p79.setIdMovie(m16);
+        p80.setIdMovie(m16);
+        movieService.save(Arrays.asList(m16));
+        pieceService.save(Arrays.asList(p76, p77, p78, p79, p80));
+        
+        Movie m17 = new Movie(17, "Strażnicy Galaktyki vol. 2", "James Gunn", "Sci-Fi", "USA", "2017", 20);
+        Piece p81 = new Piece(81, 0);
+        Piece p82 = new Piece(82, 0);
+        Piece p83 = new Piece(83, 0);
+        Piece p84 = new Piece(84, 0);
+        Piece p85 = new Piece(85, 0);
+        p81.setIdMovie(m17);
+        p82.setIdMovie(m17);
+        p83.setIdMovie(m17);
+        p84.setIdMovie(m17);
+        p85.setIdMovie(m17);
+        m17.setIdPreviousMovie(m16);
+        movieService.save(Arrays.asList(m17));
+        pieceService.save(Arrays.asList(p81, p82, p83, p84, p85));
+
+        /**
+         * Customers with phone numbers and reservation or rental or regive
+         */
+        Customer c01 = new Customer(1, "William", "Smith", "smith123", "qwerty123", new Date("12/11/2015"));
+        PhoneNumbers tel01 = new PhoneNumbers(1, "794-456-322");
+        tel01.setIdCustomer(c01);
+        Reservation res01 = new Reservation(1, new Date("11/03/2017"));
+        res01.setIdCustomer(c01);
+        res01.setIdMovie(m15);
+        customerService.save(Arrays.asList(c01));
+        reservationService.save(Arrays.asList(res01));
+        phoneNumbersService.save(Arrays.asList(tel01));
+
+        Customer c02 = new Customer(2, "John", "Williams", "williams123", "qwerty123", new Date("02/01/2015"));
+        PhoneNumbers tel02 = new PhoneNumbers(2, "234-456-322");
+        tel02.setIdCustomer(c02);
+        Rental r01 = new Rental(1, new Date("11/04/2017"));
+        r01.setIdCustomer(c02);
+        r01.setIdPiece(p71);
+        customerService.save(Arrays.asList(c02));
+        rentalService.save(Arrays.asList(r01));
+        phoneNumbersService.save(Arrays.asList(tel02));
+
+        Customer c03 = new Customer(3, "James", "Brown", "brown123", "qwerty123", new Date("06/12/2015"));
+        PhoneNumbers tel03 = new PhoneNumbers(3, "553-868-556");
+        tel03.setIdCustomer(c03);
+        customerService.save(Arrays.asList(c03));
+        phoneNumbersService.save(Arrays.asList(tel03));
+
+        Customer c04 = new Customer(4, "Jacob", "Miller", "miller123", "qwerty123", new Date("12/12/2015"));
+        PhoneNumbers tel04 = new PhoneNumbers(4, "232-111-444");
+        tel04.setIdCustomer(c04);
+        Reservation res02 = new Reservation(2, new Date("12/16/2017"));
+        res02.setIdCustomer(c04);
+        res02.setIdMovie(m17);
+        customerService.save(Arrays.asList(c04));
+        reservationService.save(Arrays.asList(res02));
+        phoneNumbersService.save(Arrays.asList(tel04));
+
+        Customer c05 = new Customer(5, "Robert", "Moore", "moore123", "qwerty123", new Date("01/05/2016"));
+        PhoneNumbers tel05 = new PhoneNumbers(5, "553-654-234");
+        tel05.setIdCustomer(c05);
+        customerService.save(Arrays.asList(c05));
+        phoneNumbersService.save(Arrays.asList(tel05));
+
+        Customer c06 = new Customer(6, "Michael", "Jones", "jones123", "qwerty123", new Date("12/07/2016"));
+        PhoneNumbers tel06 = new PhoneNumbers(6, "757-445-322");
+        tel06.setIdCustomer(c06);
+        customerService.save(Arrays.asList(c06));
+        phoneNumbersService.save(Arrays.asList(tel06));
+
+        Customer c07 = new Customer(7, "David", "Taylor", "taylor123", "qwerty123", new Date("01/07/2016"));
+        PhoneNumbers tel07 = new PhoneNumbers(7, "777-433-846");
+        tel07.setIdCustomer(c07);
+        Reservation res03 = new Reservation(3, new Date("12/01/2017"));
+        res03.setIdCustomer(c07);
+        res03.setIdMovie(m16);
+        customerService.save(Arrays.asList(c07));
+        reservationService.save(Arrays.asList(res03));
+        phoneNumbersService.save(Arrays.asList(tel07));
+
+        Customer c08 = new Customer(8, "Thomas", "Jackson", "jackson123", "qwerty123", new Date("10/04/2016"));
+        PhoneNumbers tel08 = new PhoneNumbers(8, "888-567-120");
+        tel08.setIdCustomer(c08);
+        customerService.save(Arrays.asList(c08));
+        phoneNumbersService.save(Arrays.asList(tel08));
+
+        Customer c09 = new Customer(9, "Christopher", "King", "king123", "qwerty123", new Date("06/10/2015"));
+        PhoneNumbers tel09 = new PhoneNumbers(9, "999-455-678");
+        tel09.setIdCustomer(c09);
+        customerService.save(Arrays.asList(c09));
+        phoneNumbersService.save(Arrays.asList(tel09));
+
+        Customer c10 = new Customer(10, "Mary", "Green", "green123", "qwerty123", new Date("01/10/2017"));
+        PhoneNumbers tel10 = new PhoneNumbers(10, "568-000-678");
+        tel10.setIdCustomer(c10);
+        customerService.save(Arrays.asList(c10));
+        phoneNumbersService.save(Arrays.asList(tel10));
+
+        Customer c11 = new Customer(11, "Jennifer", "Baker", "baker123", "qwerty123", new Date("02/01/2017"));
+        PhoneNumbers tel11 = new PhoneNumbers(11, "564-678-346");
+        tel11.setIdCustomer(c11);
+        customerService.save(Arrays.asList(c11));
+        phoneNumbersService.save(Arrays.asList(tel11));
+
+        Customer c12 = new Customer(12, "Elizabeth", "Nelson", "nelson123", "qwerty123", new Date("02/02/2017"));
+        PhoneNumbers tel12 = new PhoneNumbers(12, "523-564-342");
+        tel12.setIdCustomer(c12);
+        customerService.save(Arrays.asList(c12));
+        phoneNumbersService.save(Arrays.asList(tel12));
+
+        Customer c13 = new Customer(13, "Jessica", "Perez", "perez123", "qwerty123", new Date("09/03/2017"));
+        PhoneNumbers tel13 = new PhoneNumbers(13, "341-966-457");
+        PhoneNumbers tel16 = new PhoneNumbers(16, "345-237-986");
+        PhoneNumbers tel17 = new PhoneNumbers(17, "125-467-387");
+        tel13.setIdCustomer(c13);
+        tel16.setIdCustomer(c13);
+        tel17.setIdCustomer(c13);
+        customerService.save(Arrays.asList(c13));
+        phoneNumbersService.save(Arrays.asList(tel13, tel16, tel17));
+
+        Customer c14 = new Customer(14, "Sarah", "Turner", "turner123", "qwerty123", new Date("07/08/2017"));
+        PhoneNumbers tel14 = new PhoneNumbers(14, "411-525-666");
+        PhoneNumbers tel18 = new PhoneNumbers(18, "345-975-157");
+        PhoneNumbers tel19 = new PhoneNumbers(19, "632-287-578");
+        tel14.setIdCustomer(c14);
+        tel18.setIdCustomer(c14);
+        tel19.setIdCustomer(c14);
+        customerService.save(Arrays.asList(c14));
+        phoneNumbersService.save(Arrays.asList(tel14, tel18, tel19));
+
+        Customer c15 = new Customer(15, "Nancy", "Campbell", "campbell123", "qwerty123", new Date("09/10/2015"));
+        PhoneNumbers tel15 = new PhoneNumbers(15, "542-086-421");
+        PhoneNumbers tel20 = new PhoneNumbers(20, "457-678-123");
+        tel15.setIdCustomer(c15);
+        tel20.setIdCustomer(c15);
+        customerService.save(Arrays.asList(c15));
+        phoneNumbersService.save(Arrays.asList(tel15, tel20));
+
+        /**
+         * Employees
+         */
+        Employee e01 = new Employee(1, "admin", "admin", "admin", "12345", "administrator");
+        Employee e02 = new Employee(2, "David", "Smith", "smith1234", "12345", "salesman");
+        Employee e03 = new Employee(3, "Robert", "Campbell", "campbell1234", "12345", "salesman");
+        Employee e04 = new Employee(4, "Nancy", "Brown", "brown1234", "12345", "salesman");
+        Employee e05 = new Employee(5, "Elizabeth", "Miller", "miller1234", "12345", "salesman");
+        Employee e06 = new Employee(6, "Jessica", "Green", "green1234", "12345", "salesman");
+        Employee e07 = new Employee(7, "Mary", "Moore", "moore1234", "12345", "salesman");
+        Employee e08 = new Employee(8, "William", "Turner", "turner1234", "12345", "salesman");
+
+        employeeService.save(Arrays.asList(e01, e02, e03, e04, e05, e06, e07, e08));
+        
     }
 
 }
