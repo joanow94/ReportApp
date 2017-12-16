@@ -25,9 +25,14 @@ public class RentalService {
         return rentalRepository.findAll();
     }
 
-    public <S extends Rental> S save(S s) {
-        return rentalRepository.save(s);
+    public <S extends Rental> List<S> save(Iterable<S> itrbl) {
+        return rentalRepository.save(itrbl);
     }
+
+    public void deleteAll() {
+        rentalRepository.deleteAll();
+    }
+
 
     public Rental findOne(Integer id) {
         return rentalRepository.findOne(id);

@@ -25,9 +25,14 @@ public class ExtensionService {
         return extensionRepository.findAll();
     }
 
-    public <S extends Extension> S save(S s) {
-        return extensionRepository.save(s);
+    public <S extends Extension> List<S> save(Iterable<S> itrbl) {
+        return extensionRepository.save(itrbl);
     }
+
+    public void deleteAll() {
+        extensionRepository.deleteAll();
+    }
+
 
     public Extension findOne(Integer id) {
         return extensionRepository.findOne(id);

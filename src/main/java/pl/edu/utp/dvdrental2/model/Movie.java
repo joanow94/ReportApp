@@ -48,7 +48,7 @@ public class Movie implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 50)
     @Column(name = "TITLE")
     private String title;
     @Basic(optional = false)

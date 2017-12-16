@@ -58,8 +58,9 @@ public class Rental implements Serializable {
     public Rental() {
     }
 
-    public Rental(Integer id) {
+    public Rental(Integer id, Date dateOfRental) {
         this.id = id;
+        this.dateOfRental = dateOfRental;
     }
 
     public Integer getId() {

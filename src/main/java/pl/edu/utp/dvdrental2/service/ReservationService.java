@@ -25,9 +25,15 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public <S extends Reservation> S save(S s) {
-        return reservationRepository.save(s);
+    public <S extends Reservation> List<S> save(Iterable<S> itrbl) {
+        return reservationRepository.save(itrbl);
     }
+
+    public void deleteAll() {
+        reservationRepository.deleteAll();
+    }
+
+    
 
     public Reservation findOne(Integer id) {
         return reservationRepository.findOne(id);

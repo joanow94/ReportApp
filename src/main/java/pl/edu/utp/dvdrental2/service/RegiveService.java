@@ -25,9 +25,15 @@ public class RegiveService {
         return regiveRepository.findAll();
     }
 
-    public <S extends Regive> S save(S s) {
-        return regiveRepository.save(s);
+    public <S extends Regive> List<S> save(Iterable<S> itrbl) {
+        return regiveRepository.save(itrbl);
     }
+
+    public void deleteAll() {
+        regiveRepository.deleteAll();
+    }
+
+    
 
     public Regive findOne(Integer id) {
         return regiveRepository.findOne(id);
